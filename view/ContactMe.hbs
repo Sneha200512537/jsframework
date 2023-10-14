@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="app">
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/AboutMe">About</a></li>
+                <li><a href="/Projects">Projects</a></li>
+                <li><a href="/ContactMe">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <form name="contactForm" id="contactForm" action="/submit" method="POST">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <input type="text" id="firstName" name="firstName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="notARobot" required>
+                        I am not a robot
+                    </label>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </section>
+
+    
+    
+        <!-- Footer -->
+    <footer>
+        <p>&copy; SNEHA BIJU | Email: <a href="mailto:sbiju0409@gmail.com">sbiju0409@gmail.com</a></p>
+        <ul>
+            <li><a href="https://github.com/Sneha200512537/COMP2068JSFrameworks.git" target="_blank">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/sneha-biju-b57a26239" target="_blank">LinkedIn</a></li>
+        </ul>
+    
+    </footer>
+</body>
+</html>

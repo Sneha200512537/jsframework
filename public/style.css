@@ -1,0 +1,306 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and text styles */
+body {
+    background-image: url('/static/images/back.jpg');
+    background-position: center;
+    color: #fff; /* Dark gray text */
+    font-family: 'Arial', sans-serif; /* Use a common sans-serif font */
+    text-align: center;
+    padding: 20px;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Header styles */
+header.app {
+    background-color: #333; /* Dark gray background for the header */
+    color: #fff; /* White text */
+    padding: 10px 0;
+    cursor: pointer; /* Cursor style for interaction */
+}
+
+
+/* Rounded buttons for the navigation bar */
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff; /* Text color */
+    font-weight: bold;
+    background-color: #333; /* Background color for the button */
+    padding: 10px 20px; /* Padding for the button */
+    border-radius: 20px; /* Rounded corners for the button */
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Darker background color on hover */
+}
+
+
+/* Style the container div */
+.anchor-tag {
+    text-align: center; /* Center align the anchor tag */
+    margin-top: 20px; /* Add some top margin for spacing */
+}
+
+/* Style the anchor tag */
+.anchor-tag a {
+    display: inline-block;
+    background-color: #007BFF; /* Background color for the anchor tag */
+    color: #fff; /* Text color */
+    padding: 10px 20px; /* Padding for better appearance */
+    text-decoration: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s; /* Smooth transition on hover */
+}
+
+/* Hover effect for the anchor tag */
+.anchor-tag a:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+    transform: scale(1.05); /* Scale up on hover for a subtle 3D effect */
+}
+
+/* Content container styles */
+.container {
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+/* Avatar image styles with rotation */
+.img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    transition: transform 0.5s; /* Smooth rotation transition */
+}
+
+.img:hover {
+    transform: rotateY(180deg); /* Rotate horizontally on hover */
+}
+
+/* Name styles */
+.name {
+    background-color: #fff;
+    border-radius: 50%;
+    margin-top: 20px; /* Add margin-top for spacing */
+    font-size: 24px;
+    font-weight: bold;
+    color: #333; /* Dark gray text */
+}
+
+/* Portfolio item styles */
+.portfolio-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.portfolio-item {
+    text-align: center;
+    margin: 20px;
+    width: 300px;
+}
+/* Project Zoom Effect */
+.project-image-container {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.project-image-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+.project-image-container:hover img {
+    transform: scale(1.1);
+}
+
+
+.portfolio-item img {
+    max-width: 100%;
+    height: auto;
+    border: 2px solid #333; /* Dark gray border */
+    border-radius: 5px;
+}
+
+.description {
+    background-color: #f5f5f5;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.description h3 {
+    font-size: 20px;
+    margin: 10px 0;
+    font-weight: bold;
+    color: #000000;
+    font-weight: bold; /* Dark gray text */
+}
+
+.description p {
+    font-size: 16px;
+    color: #000000; /* Light gray text */
+}
+
+/* Footer styles */
+footer {
+    background-color: #333; /* Dark gray background for the footer */
+    color: #fff; /* White text */
+    padding: 10px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+footer ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: #fff; /* White text */
+    font-weight: bold;
+} 
+
+footer a {
+    text-decoration: none;
+    color: #fff; /* White text */
+    font-weight: bold;
+    margin: 0 20px; /* Add spacing between links */
+}
+* About Me page styles */
+.about-me {
+    background-color: #f5f5f5; /* Light gray background for About Me page */
+    padding: 20px;
+    text-align: center;
+}
+
+.about-me h1 {
+    background-color: #f5f5f5;
+    font-size: 36px;
+    font-weight: bold;
+    color: #000000; /* Dark gray text */
+    margin-bottom: 20px;
+}
+
+.about-me img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 20px 0;
+}
+
+.about-me h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff; /* Dark gray text */
+    margin-bottom: 10px;
+}
+
+.about-me p {
+    font-size: 16px;
+    background-color: #f5f5f5;
+    border-radius: 15px;
+    background-color: #f5f5f5;
+    color: #333; /* Dark gray text */
+    margin: 10px 0;
+}
+
+
+
+
+
+/* Contact Me page styles */
+#contact {
+    background-color: #f5f5f5; /* Light gray background for the Contact Me section */
+    padding: 20px;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #333; /* Dark gray text */
+    margin-bottom: 20px;
+}
+
+#contact .container {
+    margin: 20px auto;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+#contact .form-group {
+    margin-bottom: 20px;
+}
+
+#contact label {
+    display: block;
+    font-weight: bold;
+    color: #333; /* Dark gray text */
+}
+
+#contact input[type="text"],
+#contact input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#contact .checkbox-label {
+    display: block;
+    margin-top: 10px;
+}
+
+#contact .checkbox-label input {
+    margin-right: 5px;
+}
+
+#contact button[type="submit"] {
+    background-color: #007BFF; /* Blue background for the submit button */
+    color: #fff; /* White text */
+    padding: 10px 20px; /* Padding for better appearance */
+    border: none;
+    border-radius: 5px; /* Rounded corners */
+    font-weight: bold;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+#contact button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker background color on hover */
+}
