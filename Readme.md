@@ -1,29 +1,152 @@
+# Bytes utility
 
-In this assignment, we are  building a personal portfolio website using Node, Express, and HBS views . 
+[![NPM Version][npm-image]][npm-url]
+[![NPM Downloads][downloads-image]][downloads-url]
+[![Build Status][ci-image]][ci-url]
+[![Test Coverage][coveralls-image]][coveralls-url]
 
+Utility to parse a string bytes (ex: `1TB`) to bytes (`1099511627776`) and vice-versa.
 
-For this first we use the code cd ASSIGNMENT01 to go to the folder we need and then open its terminal to download the necessary npm packages using npm install express and  npm install hbs codes.
+## Installation
 
-Then we create an app.js file.Express and Node.js are used in the development of this application.
-For rendering views, we employ Handlebars (hbs) as the template engine.First, we import the necessary dependencies (path, express).
-For displaying HTML templates, we set the view engine to hbs and the view directory to view.
-Express.static is used to serve static files, such as CSS, JavaScript, and pictures, from the 'public' directory.
-The irouter variable, imported from the 'routes/index.js' file, contains the definitions of the routes for your application.
+This is a [Node.js](https://nodejs.org/en/) module available through the
+[npm registry](https://www.npmjs.com/). Installation is done using the
+[`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
 
-Then we create index.js, which defines routes for different pages of your web application using the Express router.Four paths are established:
-The homepage is reached via the first route, '/'. The 'index' view is shown when a user visits.
-For the 'About Me' page, use the second path, '/AboutMe'. The 'AboutMe' screen appears when a person visits.
-'/Projects' is the third route, and it leads to the 'Projects' page where the 'Projects' view is displayed.
-For the 'Contact Me' page, the 'ContactMe' view is shown through the fourth route, '/ContactMe'.
-Every route defines a callback function that handles the request and response objects (req and res) to render the relevant view, along with the HTTP method (GET).
+```bash
+$ npm install bytes
+```
 
-We  create a views folder to put all our templates.Inside the views we create our pages, ie home page,about me, contact me and projects and give them templates.We code them using html language.We create a single style.css under public to give css to all our view templates.
-index.js and app.js files have been referred from class codes
-Some Html codes have been referred from https://www.w3schools.com/html/html_examples.asp
+## Usage
 
-Reference for images
-Avatar- retrieved from https://avatarmaker.com/female/
-designing.jpg retrieved from https://gracethemes.com/wp-content/uploads/2018/05/How-Web-Development-Framework-Work-for-Business-Progress.png
-web.jpg retrieved from https://tse1.mm.bing.net/th?id=OIP.WCsJCxAre5bhgRrbD0dqCgHaDd&pid=Api&P=0&h=180
-back.jpg retrieved from https://static.vecteezy.com/system/resources/previews/000/523/309/original/web-development-and-programming-coding-concept-seo-optimization-modern-web-design-on-laptop-screen-vector.jpg
-women.jpg retrieved from https://cdn4.iconfinder.com/data/icons/business-people-characters/50/6-1024.png
+```js
+var bytes = require('bytes');
+```
+
+#### bytes(number｜string value, [options]): number｜string｜null
+
+Default export function. Delegates to either `bytes.format` or `bytes.parse` based on the type of `value`.
+
+**Arguments**
+
+| Name    | Type     | Description        |
+|---------|----------|--------------------|
+| value   | `number`｜`string` | Number value to format or string value to parse |
+| options | `Object` | Conversion options for `format` |
+
+**Returns**
+
+| Name    | Type             | Description                                     |
+|---------|------------------|-------------------------------------------------|
+| results | `string`｜`number`｜`null` | Return null upon error. Numeric value in bytes, or string value otherwise. |
+
+**Example**
+
+```js
+bytes(1024);
+// output: '1KB'
+
+bytes('1KB');
+// output: 1024
+```
+
+#### bytes.format(number value, [options]): string｜null
+
+Format the given value in bytes into a string. If the value is negative, it is kept as such. If it is a float, it is
+ rounded.
+
+**Arguments**
+
+| Name    | Type     | Description        |
+|---------|----------|--------------------|
+| value   | `number` | Value in bytes     |
+| options | `Object` | Conversion options |
+
+**Options**
+
+| Property          | Type   | Description                                                                             |
+|-------------------|--------|-----------------------------------------------------------------------------------------|
+| decimalPlaces | `number`｜`null` | Maximum number of decimal places to include in output. Default value to `2`. |
+| fixedDecimals | `boolean`｜`null` | Whether to always display the maximum number of decimal places. Default value to `false` |
+| thousandsSeparator | `string`｜`null` | Example of values: `' '`, `','` and `'.'`... Default value to `''`. |
+| unit | `string`｜`null` | The unit in which the result will be returned (B/KB/MB/GB/TB). Default value to `''` (which means auto detect). |
+| unitSeparator | `string`｜`null` | Separator to use between number and unit. Default value to `''`. |
+
+**Returns**
+
+| Name    | Type             | Description                                     |
+|---------|------------------|-------------------------------------------------|
+| results | `string`｜`null` | Return null upon error. String value otherwise. |
+
+**Example**
+
+```js
+bytes.format(1024);
+// output: '1KB'
+
+bytes.format(1000);
+// output: '1000B'
+
+bytes.format(1000, {thousandsSeparator: ' '});
+// output: '1 000B'
+
+bytes.format(1024 * 1.7, {decimalPlaces: 0});
+// output: '2KB'
+
+bytes.format(1024, {unitSeparator: ' '});
+// output: '1 KB'
+```
+
+#### bytes.parse(string｜number value): number｜null
+
+Parse the string value into an integer in bytes. If no unit is given, or `value`
+is a number, it is assumed the value is in bytes.
+
+Supported units and abbreviations are as follows and are case-insensitive:
+
+  * `b` for bytes
+  * `kb` for kilobytes
+  * `mb` for megabytes
+  * `gb` for gigabytes
+  * `tb` for terabytes
+  * `pb` for petabytes
+
+The units are in powers of two, not ten. This means 1kb = 1024b according to this parser.
+
+**Arguments**
+
+| Name          | Type   | Description        |
+|---------------|--------|--------------------|
+| value   | `string`｜`number` | String to parse, or number in bytes.   |
+
+**Returns**
+
+| Name    | Type        | Description             |
+|---------|-------------|-------------------------|
+| results | `number`｜`null` | Return null upon error. Value in bytes otherwise. |
+
+**Example**
+
+```js
+bytes.parse('1KB');
+// output: 1024
+
+bytes.parse('1024');
+// output: 1024
+
+bytes.parse(1024);
+// output: 1024
+```
+
+## License
+
+[MIT](LICENSE)
+
+[ci-image]: https://badgen.net/github/checks/visionmedia/bytes.js/master?label=ci
+[ci-url]: https://github.com/visionmedia/bytes.js/actions?query=workflow%3Aci
+[coveralls-image]: https://badgen.net/coveralls/c/github/visionmedia/bytes.js/master
+[coveralls-url]: https://coveralls.io/r/visionmedia/bytes.js?branch=master
+[downloads-image]: https://badgen.net/npm/dm/bytes
+[downloads-url]: https://npmjs.org/package/bytes
+[npm-image]: https://badgen.net/npm/v/bytes
+[npm-url]: https://npmjs.org/package/bytes
